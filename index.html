@@ -1,31 +1,13 @@
 <!doctype html>
-<html lang="ru">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111216"><meta name="description" content="Попробуй выдержку, диафрагму и ISO. Интерактивный тренажёр для первой съёмки фильма."><title>Кадр — тренажёр камеры</title><link rel="stylesheet" href="style.css?v=2"></head>
-<body>
-<header class="top"><a href="./" class="brand" aria-label="Кадр — на главную"><span class="brand-icon" aria-hidden="true">◉</span> кадр<span class="brand-sub">лаборатория камеры</span></a><span class="lesson">Снимаем первый фильм</span></header>
-<main>
-<section class="intro"><div><p class="eyebrow">SONY A7 III / A7S III · ОСНОВЫ</p><h1>Что меняет камера</h1><p>Один параметр. Сразу виден результат.</p></div><button id="reset" class="quiet">Сбросить настройки <span aria-hidden="true">↺</span></button></section>
-<section class="lab" aria-label="Интерактивный тренажёр камеры">
-<div class="viewer-column">
-<div class="viewfinder">
-<canvas id="scene" width="960" height="540" role="img" aria-label="Комната и движущийся оранжевый мяч. Яркость, смаз движения, размытие фона и шум меняются вместе с настройками."></canvas>
-<div class="camera-top"><span><span class="live-dot"></span> ВИДЕО <b>25 к/с</b></span><button id="motion" aria-pressed="true">Пауза движения</button></div>
-<div class="camera-bottom"><span id="osd">1/50 <i>F4</i> ISO 400</span><span>50 мм · фокус 1,2 м</span></div>
-<div id="loading" class="loading">Готовим сцену…</div>
-</div>
-<div class="under-view"><div class="ev-wrap"><span class="small-label">Экспозиция относительно старта</span><div class="ev"><span>−3</span><div class="ev-track"><span id="evNeedle"></span></div><span>+3</span><strong id="evValue">0 EV</strong></div></div><button class="compare" id="compare" aria-pressed="false">Показать исходный кадр</button></div>
-<div class="mode-row"><label class="switch"><input id="isolate" type="checkbox"><span class="switch-track"></span><span>Сравнить эффект без изменения яркости</span></label><p id="modeHint">Ручной режим: автоматика ничего не компенсирует.</p></div>
-<div class="presets" aria-label="Примеры настроек"><span class="small-label">Попробовать</span><button data-preset="base" class="active">Обычная сцена</button><button data-preset="background">Мягкий фон</button><button data-preset="freeze">Быстрое движение</button><button data-preset="dark">Темно в комнате</button></div>
-</div>
-<div class="controls">
-<article class="control"><div class="control-head"><div><span class="control-number">01</span><h2><label for="shutter">Выдержка</label></h2></div><output id="shutterValue" for="shutter">1/50 <small>с</small></output></div><p>Как долго собирается свет одного кадра.</p><input type="range" id="shutter" min="0" max="8" value="2" step="1" aria-describedby="shutterHint"><div class="range-ends"><span>1/25 · больше смаза</span><span>1/1000 · чётче движение</span></div><p class="effect" id="shutterHint">1/50 с — привычный смаз для видео 25 к/с.</p></article>
-<article class="control"><div class="control-head"><div><span class="control-number">02</span><h2><label for="aperture">Диафрагма</label></h2></div><output id="apertureValue" for="aperture">f/4</output></div><p>Размер отверстия, через которое проходит свет.</p><input type="range" id="aperture" min="0" max="7" value="3" step="1" aria-describedby="apertureHint"><div class="range-ends"><span>f/1.8 · фон мягче</span><span>f/16 · фон чётче</span></div><p class="effect" id="apertureHint">f/4 — умеренное размытие фона.</p></article>
-<article class="control"><div class="control-head"><div><span class="control-number">03</span><h2><label for="iso">ISO</label></h2></div><output id="isoValue" for="iso">400</output></div><p>Настройка яркости сигнала с сенсора.</p><input type="range" id="iso" min="0" max="10" value="2" step="1" aria-describedby="isoHint"><div class="range-ends"><span>100 · ниже</span><span>51200 · выше</span></div><p class="effect" id="isoHint">ISO не добавляет света в сцену.</p></article>
-</div>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#111216"><meta name="description" content="Выдержка, диафрагма и ISO — попробуй настройки камеры."><title>Кадр</title><link rel="stylesheet" href="style.css?v=mobile1"></head>
+<body><main class="app">
+<header><h1>Кадр<span>Настройки камеры</span></h1><button id="reset" aria-label="Сбросить настройки" title="Сбросить настройки">↺</button></header>
+<section class="picture" aria-label="Изображение камеры"><canvas id="scene" width="640" height="360" role="img" aria-label="Движущийся мяч перед дальним фоном. Настройки меняют смаз движения, размытие фона, шум и яркость."></canvas><button id="motion" aria-label="Пауза движения" aria-pressed="false">Ⅱ</button><div id="loading">Загрузка…</div></section>
+<p id="hint" class="hint" aria-live="polite">Меняй настройки и смотри на картинку.</p>
+<section class="controls" aria-label="Настройки">
+<div class="control"><div class="heading"><label for="shutter">Выдержка</label><output id="shutterValue" for="shutter">1/50 с</output></div><input id="shutter" type="range" min="0" max="8" value="2" step="1"><div class="ends"><span>Больше смаза</span><span>Чётче движение</span></div></div>
+<div class="control"><div class="heading"><label for="aperture">Диафрагма</label><output id="apertureValue" for="aperture">f/4</output></div><input id="aperture" type="range" min="0" max="7" value="3" step="1"><div class="ends"><span>Фон мягче</span><span>Фон чётче</span></div></div>
+<div class="control"><div class="heading"><label for="iso">ISO</label><output id="isoValue" for="iso">400</output></div><input id="iso" type="range" min="0" max="10" value="2" step="1"><div class="ends"><span>Меньше шума</span><span>Больше шума</span></div></div>
 </section>
-<p class="scene-note" id="sceneNote" aria-live="polite">Свет в комнате обычный. Мяч движется в плоскости фокуса, фон находится дальше.</p>
-<section class="try-section"><div><p class="eyebrow">ТВОЯ МИНИ-ПРАКТИКА</p><h2>Проверь себя в кадре</h2></div><ol><li><b>Движение</b><span>Сравни 1/50 и 1/500. Что стало с мячом и яркостью?</span></li><li><b>Фон</b><span>Сравни f/1.8 и f/8. Для размытия включи сравнение без изменения яркости.</span></li><li><b>Компромисс</b><span>Поставь 1/500, f/4, ISO 4000. Яркость почти вернулась. Что изменилось?</span></li></ol></section>
-<details class="model-note"><summary>Как устроена учебная модель</summary><p>Фиксированы 25 к/с, объектив 50 мм, фокус на мяче в 1,2 м. Фон условно находится в 5 м. Выдержка ограничена 1/25 с: в этом упражнении она не длиннее одного кадра. При изменении диафрагмы расстояния и фокус не меняются.</p><p>Яркость связана с выдержкой, квадратом диафрагменного числа, ISO и освещением. Размытие и смаз наглядно приближены. Шум — условная иллюстрация, а не тест Sony: реальный результат зависит от света, сенсора, профиля и обработки. Большое ISO само по себе не заменяет освещение.</p><p>Режим сравнения специально выравнивает яркость только для просмотра эффекта. Это не автоматическая настройка ISO. Белый баланс и цвет здесь фиксированы. Комната — иллюстрация, созданная с помощью ИИ.</p><p>Для съёмки на площадке используйте согласованные настройки своей команды. <a href="https://www.sony.pl/electronics/support/articles/00268256" target="_blank" rel="noopener">Основы видео Sony</a> · <a href="https://helpguide.sony.net/ilc/1720/v1/en/index.html" target="_blank" rel="noopener">A7 III</a> · <a href="https://helpguide.sony.net/ilc/2410/v1/en/index.html" target="_blank" rel="noopener">A7S III</a></p></details>
-</main><footer><span>Кадр</span><p>Сначала попробуй здесь. Потом проверь на своей камере.</p><span>Выдержка · диафрагма · ISO</span></footer>
-<script type="module" src="app.js?v=2"></script>
-</body></html>
+<button class="brightness" id="brightness" aria-pressed="true"><span class="switch" aria-hidden="true"></span><span id="brightnessText">Яркость выровнена</span></button>
+</main><script type="module" src="app.js?v=mobile1"></script></body></html>
