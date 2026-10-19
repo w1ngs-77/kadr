@@ -5,10 +5,11 @@
 <section class="picture" aria-label="Изображение камеры"><canvas id="scene" width="640" height="360" role="img" aria-label="Движущийся мяч перед дальним фоном. Настройки меняют смаз движения, размытие фона, шум и яркость."></canvas><button id="motion" aria-label="Пауза движения" aria-pressed="false">Ⅱ</button><div id="loading">Загрузка…</div></section>
 <p id="hint" class="hint" aria-live="polite">Меняй настройки и смотри на картинку.</p>
 <section class="controls" aria-label="Настройки">
-<div class="control"><div class="heading"><label for="shutter">Выдержка</label><output id="shutterValue" for="shutter">1/50 с</output></div><input id="shutter" type="range" min="0" max="8" value="2" step="1"><div class="ends"><span>Больше смаза</span><span>Чётче движение</span></div></div>
+<div class="control"><div class="heading"><label for="shutter">Выдержка</label><output id="shutterValue" for="shutter">1/50 с</output></div><input id="shutter" type="range" min="0" max="9" value="3" step="1"><div class="ends"><span>Больше смаза</span><span>Чётче движение</span></div></div>
 <div class="control"><div class="heading"><label for="aperture">Диафрагма</label><output id="apertureValue" for="aperture">f/4</output></div><input id="aperture" type="range" min="0" max="7" value="3" step="1"><div class="ends"><span>Фон мягче</span><span>Фон чётче</span></div></div>
 <div class="control"><div class="heading"><label for="iso">ISO</label><output id="isoValue" for="iso">400</output></div><input id="iso" type="range" min="0" max="10" value="2" step="1"><div class="ends"><span>Меньше шума</span><span>Больше шума</span></div></div>
 </section>
 <button class="brightness" id="brightness" aria-pressed="true"><span class="switch" aria-hidden="true"></span><span id="brightnessText">Яркость выровнена</span></button>
-</main><script type="module" src="app.js?v=shutter2"></script></body></html>
+</main><script type="module" src="app.js?v=shutter3"></script></body></html>
+
 
